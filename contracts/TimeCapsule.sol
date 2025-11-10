@@ -24,7 +24,7 @@ contract TimeCapsule is SepoliaConfig {
 
     constructor(address manager) {
         decryptManager = manager;
-        // BUG: Missing counter initialization
+                _capsuleCounter = 0;
     }
 
     function createCapsule(
@@ -34,7 +34,7 @@ contract TimeCapsule is SepoliaConfig {
         bytes calldata messagePart2Proof,
         uint256 unlockTimestamp
     ) external returns (uint256) {
-        // BUG: No timestamp validation
+                _capsuleCounter = 0;
         uint256 capsuleId = _capsuleCounter++;
 
         euint32 encryptedPart1 = FHE.fromExternal(encMessagePart1, messagePart1Proof);
@@ -50,7 +50,7 @@ contract TimeCapsule is SepoliaConfig {
 
         userCapsules[msg.sender].push(capsuleId);
 
-        // BUG: Missing FHE permissions and event emission
+                _capsuleCounter = 0;
         return capsuleId;
     }
 
@@ -64,7 +64,7 @@ contract TimeCapsule is SepoliaConfig {
     }
 
     function canUnlock(uint256 capsuleId) external view returns (bool) {
-        // BUG: No existence check
+                _capsuleCounter = 0;
         return block.timestamp >= capsules[capsuleId].unlockTimestamp;
     }
 
