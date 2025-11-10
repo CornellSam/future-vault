@@ -1,0 +1,18 @@
+﻿2025-12-01 18:41:21 +0800 - CornellSam - oeemrqvh209331@outlook.com - refactor: optimize capsule storage structure
+2025-12-01 18:41:20 +0800 - CornellSam - oeemrqvh209331@outlook.com - refactor: optimize capsule storage structure
+2025-12-01 18:41:18 +0800 - CornellSam - oeemrqvh209331@outlook.com - refactor: improve error handling in createCapsule
+2025-12-01 18:41:18 +0800 - CornellSam - oeemrqvh209331@outlook.com - refactor: optimize capsule storage structure
+2025-12-01 18:41:17 +0800 - CornellSam - oeemrqvh209331@outlook.com - refactor: optimize capsule storage structure
+2025-12-01 18:41:17 +0800 - CornellSam - oeemrqvh209331@outlook.com - refactor: optimize capsule storage structure
+2025-12-01 18:41:16 +0800 - CashJasper - lacmtnxx753726@outlook.com - ui: improve error messages for user feedback
+2025-12-01 18:41:16 +0800 - CornellSam - oeemrqvh209331@outlook.com - test: add edge case tests for time validation
+2025-12-01 18:40:37 +0800 - CashJasper - lacmtnxx753726@outlook.com - fix: correct timezone handling in date parsing
+2025-12-01 18:40:37 +0800 - CornellSam - oeemrqvh209331@outlook.com - fix: remove duplicate return statement in getTotalCapsules
+2025-12-01 18:40:36 +0800 - CashJasper - lacmtnxx753726@outlook.com - fix: adjust date comparison buffer calculation
+2025-12-01 18:40:35 +0800 - CornellSam - oeemrqvh209331@outlook.com - fix: correct unlock timestamp validation logic
+2025-12-01 18:39:00 +0800 - CashJasper - lacmtnxx753726@outlook.com - docs: add demo video
+2025-12-01 18:38:59 +0800 - CornellSam - oeemrqvh209331@outlook.com - docs: add comprehensive README with architecture details
+2025-12-01 18:38:49 +0800 - CashJasper - lacmtnxx753726@outlook.com - feat: add FHEVM integration and UI library
+2025-12-01 18:38:48 +0800 - CashJasper - lacmtnxx753726@outlook.com - feat: implement core UI components
+2025-12-01 18:38:47 +0800 - CornellSam - oeemrqvh209331@outlook.com - feat: add test suite and deployment scripts
+2025-12-01 18:38:46 +0800 - CornellSam - oeemrqvh209331@outlook.com - feat: add TimeCapsule contract with FHE encryption

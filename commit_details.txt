@@ -1,0 +1,18 @@
+﻿f390c3c|2025-12-01 18:41:21 +0800|CornellSam|oeemrqvh209331@outlook.com|refactor: optimize capsule storage structure
+2d88088|2025-12-01 18:41:20 +0800|CornellSam|oeemrqvh209331@outlook.com|refactor: optimize capsule storage structure
+c736136|2025-12-01 18:41:18 +0800|CornellSam|oeemrqvh209331@outlook.com|refactor: improve error handling in createCapsule
+69a2579|2025-12-01 18:41:18 +0800|CornellSam|oeemrqvh209331@outlook.com|refactor: optimize capsule storage structure
+28255a1|2025-12-01 18:41:17 +0800|CornellSam|oeemrqvh209331@outlook.com|refactor: optimize capsule storage structure
+2f0ae26|2025-12-01 18:41:17 +0800|CornellSam|oeemrqvh209331@outlook.com|refactor: optimize capsule storage structure
+7d352f6|2025-12-01 18:41:16 +0800|CashJasper|lacmtnxx753726@outlook.com|ui: improve error messages for user feedback
+289a3ea|2025-12-01 18:41:16 +0800|CornellSam|oeemrqvh209331@outlook.com|test: add edge case tests for time validation
+0729991|2025-12-01 18:40:37 +0800|CashJasper|lacmtnxx753726@outlook.com|fix: correct timezone handling in date parsing
+89e94a7|2025-12-01 18:40:37 +0800|CornellSam|oeemrqvh209331@outlook.com|fix: remove duplicate return statement in getTotalCapsules
+9a79af4|2025-12-01 18:40:36 +0800|CashJasper|lacmtnxx753726@outlook.com|fix: adjust date comparison buffer calculation
+01f1d98|2025-12-01 18:40:35 +0800|CornellSam|oeemrqvh209331@outlook.com|fix: correct unlock timestamp validation logic
+d75e81d|2025-12-01 18:39:00 +0800|CashJasper|lacmtnxx753726@outlook.com|docs: add demo video
+cfc1047|2025-12-01 18:38:59 +0800|CornellSam|oeemrqvh209331@outlook.com|docs: add comprehensive README with architecture details
+d11a313|2025-12-01 18:38:49 +0800|CashJasper|lacmtnxx753726@outlook.com|feat: add FHEVM integration and UI library
+c39a423|2025-12-01 18:38:48 +0800|CashJasper|lacmtnxx753726@outlook.com|feat: implement core UI components
+bb3abe2|2025-12-01 18:38:47 +0800|CornellSam|oeemrqvh209331@outlook.com|feat: add test suite and deployment scripts
+2641220|2025-12-01 18:38:46 +0800|CornellSam|oeemrqvh209331@outlook.com|feat: add TimeCapsule contract with FHE encryption
