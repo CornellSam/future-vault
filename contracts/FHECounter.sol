@@ -6,13 +6,15 @@ import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
 
 contract FHECounter is SepoliaConfig {
     euint32 private counter;
+
     event CounterIncremented(euint32 newValue);
 
     constructor() {
-        // BUG: Not initialized
+        // BUG: Counter not initialized
     }
 
     function increment() public {
+        // BUG: No FHE permissions
         counter = FHE.add(counter, FHE.asEuint32(1));
         emit CounterIncremented(counter);
     }
