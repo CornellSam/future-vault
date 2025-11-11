@@ -1,12 +1,12 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
-// BUG: Missing FHE plugin
+import "@fhevm-hardhat-plugin";
 
 const config: HardhatUserConfig = {
   solidity: "0.8.24",
   networks: {
     hardhat: {
-      // BUG: Missing FHE configuration
+      import "@fhevm-hardhat-plugin";
     },
     sepolia: {
       url: process.env.SEPOLIA_URL || "",
