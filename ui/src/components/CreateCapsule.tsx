@@ -64,8 +64,8 @@ export const CreateCapsule = () => {
           const [year, month, day] = datePart.split('-').map(Number);
           const [hours, minutes] = timePart.split(':').map(Number);
           
-          // Create date in UTC (fixing timezone issues)
-          const unlockDateTime = new Date(Date.UTC(year, month - 1, day, hours, minutes));
+          // Create date in local timezone
+          const unlockDateTime = new Date(year, month - 1, day, hours, minutes);
           const now = new Date();
           
           // Add a small buffer (1 minute) to account for any timing issues
