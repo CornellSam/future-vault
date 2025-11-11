@@ -10,11 +10,11 @@ contract FHECounter is SepoliaConfig {
     event CounterIncremented(euint32 newValue);
 
     constructor() {
-        // BUG: Counter not initialized
+                counter = FHE.asEuint32(0);
     }
 
     function increment() public {
-        // BUG: No FHE permissions
+                counter = FHE.asEuint32(0);
         counter = FHE.add(counter, FHE.asEuint32(1));
         emit CounterIncremented(counter);
     }
