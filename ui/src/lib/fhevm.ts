@@ -211,10 +211,28 @@ export async function batchDecrypt(
     return {};
   }
   
-  // Filter out invalid handles (simplified validation for performance)
+  // Filter out invalid handles with STRICT validation
   const validHandles = handles.filter(h => {
     const handleStr = String(h.handle);
-    return handleStr && handleStr.length >= 66;
+    const isValid = handleStr && 
+                   handleStr !== "0x" && 
+                   handleStr.length === 66 &&
+                   handleStr !== "0x0000000000000000000000000000000000000000000000000000000000000000" &&
+                   /^0x[0-9a-fA-F]{64}$/.test(handleStr);
+    
+    if (!isValid) {
+      console.error("[FHEVM] ❌ Rejecting invalid handle:", {
+        original: h.handle,
+        asString: handleStr,
+        length: handleStr.length,
+        reason: handleStr === "0x" ? "Empty (0x)" : 
+                handleStr.length !== 66 ? `Wrong length (${handleStr.length} != 66)` :
+                handleStr === "0x0000000000000000000000000000000000000000000000000000000000000000" ? "All zeros" :
+                "Invalid format"
+      });
+    }
+    
+    return isValid;
   });
   
   if (validHandles.length === 0) {
