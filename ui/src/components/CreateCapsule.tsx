@@ -164,12 +164,17 @@ export const CreateCapsule = () => {
       const proofPart2 = encrypted2.inputProof as `0x${string}`;
 
       // Convert unlock date to Unix timestamp
-      // Parse the date correctly
+      // Parse the date correctly (ensure consistent timezone handling)
       const [datePart, timePart] = unlockDate.split('T');
       const [year, month, day] = datePart.split('-').map(Number);
       const [hours, minutes] = timePart.split(':').map(Number);
       const unlockDateTime = new Date(year, month - 1, day, hours, minutes);
       const unlockTimestamp = Math.floor(unlockDateTime.getTime() / 1000);
+      
+      // Validate timestamp is in the future
+      if (unlockTimestamp <= Math.floor(Date.now() / 1000)) {
+        throw new Error("Unlock date must be in the future");
+      }
 
       await write.writeContractAsync({
         abi: TimeCapsuleABI.abi,
