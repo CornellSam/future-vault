@@ -151,10 +151,10 @@ export const CapsuleVault = () => {
         const bytes: number[] = [];
         let n = num;
         
-        // Extract bytes from the number (little-endian for compatibility)
+        // Extract bytes from the number (big-endian: most significant byte first)
         // We encoded as: (byte0 << 24) | (byte1 << 16) | (byte2 << 8) | byte3
         for (let i = 0; i < 4; i++) {
-          bytes.push(n & 0xFF); // Changed to push for little-endian
+          bytes.unshift(n & 0xFF); // Insert at beginning to maintain order
           n = n >>> 8;
         }
         
