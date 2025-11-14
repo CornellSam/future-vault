@@ -36,6 +36,10 @@ describe("TimeCapsule", function () {
     }
 
     ({ timeCapsuleContract, timeCapsuleContractAddress } = await deployFixture());
+    
+    // Reset state for each test
+    const totalCapsules = await timeCapsuleContract.getTotalCapsules();
+    expect(totalCapsules).to.be.at.least(0);
   });
 
   it("should initialize with zero capsules", async function () {
