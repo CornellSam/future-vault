@@ -118,7 +118,10 @@ export const CapsuleVault = () => {
     const unlockTime = Number(capsule.unlockTimestamp);
     
     if (now < unlockTime) {
-      toast.error("This capsule is still locked!");
+      const timeLeft = unlockTime - now;
+      const hoursLeft = Math.floor(timeLeft / 3600);
+      const minutesLeft = Math.floor((timeLeft % 3600) / 60);
+      toast.error(`This capsule is still locked! Unlocks in ${hoursLeft}h ${minutesLeft}m`);
       return;
     }
 
