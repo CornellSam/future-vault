@@ -237,10 +237,11 @@ export async function batchDecrypt(
   
   if (validHandles.length === 0) {
     console.error("[FHEVM] ❌ NO VALID HANDLES AFTER FILTERING!");
+    console.error("[FHEVM] Original handles count:", handles.length);
     return {};
   }
   
-  console.log("[FHEVM] ✅ Valid handles:", validHandles.length);
+  console.log("[FHEVM] ✅ Valid handles:", validHandles.length, "out of", handles.length);
   
   try {
     const isLocalNetwork = chainId === 31337;
