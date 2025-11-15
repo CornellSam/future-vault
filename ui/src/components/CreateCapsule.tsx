@@ -150,7 +150,8 @@ export const CreateCapsule = () => {
         messageBytes: Array.from(messageBytes),
         messageNum1,
         messageNum2,
-        messageLength: messageBytes.length
+        messageLength: messageBytes.length,
+        maxLength: 8
       });
 
       console.log("[CreateCapsule] Encrypting message parts...");
