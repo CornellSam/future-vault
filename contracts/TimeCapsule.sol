@@ -136,6 +136,7 @@ contract TimeCapsule is SepoliaConfig {
     function canUnlock(uint256 capsuleId) external view returns (bool) {
         Capsule memory capsule = capsules[capsuleId];
         require(capsule.exists, "Capsule does not exist");
+        // Check if current time has reached or passed unlock timestamp
         return block.timestamp >= capsule.unlockTimestamp;
     }
 
