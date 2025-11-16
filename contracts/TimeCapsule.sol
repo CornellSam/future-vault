@@ -1,8 +1,6 @@
-// Optimized struct packing for gas savings
-    struct Capsule {
-        uint256 unlockTimestamp;
-        address creator;
-        bool exists;
-        euint32 encryptedMessagePart1;
-        euint32 encryptedMessagePart2;
+function createMultipleCapsules(
+        externalEuint32[] calldata encMessages,
+        uint256[] calldata unlockTimestamps
+    ) external returns (uint256[] memory) {
+        // Implementation for batch creation
     }
