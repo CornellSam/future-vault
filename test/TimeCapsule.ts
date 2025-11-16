@@ -103,6 +103,10 @@ describe("TimeCapsule", function () {
     const userCapsules = await timeCapsuleContract.getUserCapsules(signers.alice.address);
     expect(userCapsules.length).to.eq(1);
     expect(userCapsules[0]).to.eq(0);
+    
+    // Verify event was emitted
+    await expect(tx).to.emit(timeCapsuleContract, "CapsuleCreated")
+      .withArgs(0, signers.alice.address, unlockTimestamp);
   });
 
   it("should reject creation with past unlock date", async function () {
