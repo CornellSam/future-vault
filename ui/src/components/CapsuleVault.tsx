@@ -182,11 +182,13 @@ export const CapsuleVault = () => {
       const decryptedMessage = messagePart1 + messagePart2;
       
       console.log("[CapsuleVault] Decryption result:", {
+        capsuleId: capsule.id,
         decryptedNum1,
         decryptedNum2,
         messagePart1,
         messagePart2,
-        decryptedMessage
+        decryptedMessage,
+        messageLength: decryptedMessage.length
       });
 
       // Display the decrypted message
