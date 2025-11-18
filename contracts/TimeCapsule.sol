@@ -59,6 +59,7 @@ contract TimeCapsule is SepoliaConfig {
         bytes calldata messagePart2Proof,
         uint256 unlockTimestamp
     ) external returns (uint256) {
+        // Validate unlock timestamp is in the future
         require(unlockTimestamp > block.timestamp, "Unlock date must be in the future");
 
         uint256 capsuleId = _capsuleCounter;
