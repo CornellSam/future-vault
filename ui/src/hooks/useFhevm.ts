@@ -85,6 +85,10 @@ export function useFhevm(chainId?: number) {
         throw new Error("FHEVM instance not initialized");
       }
       
+      if (!handle || handle === "0x" || handle.length !== 66) {
+        throw new Error(`Invalid handle format: ${handle}`);
+      }
+      
       const provider = new BrowserProvider((window as any).ethereum);
       const signer = await provider.getSigner();
       
