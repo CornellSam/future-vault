@@ -273,6 +273,10 @@ describe("TimeCapsule", function () {
 
     const totalCapsules = await timeCapsuleContract.getTotalCapsules();
     expect(totalCapsules).to.eq(2);
+    
+    // Verify both capsules belong to alice
+    const aliceCapsules = await timeCapsuleContract.getUserCapsules(signers.alice.address);
+    expect(aliceCapsules.length).to.eq(2);
   });
 });
 
