@@ -304,6 +304,12 @@ const CapsuleCard = ({ capsule, onUnlock, isDecrypting }: CapsuleCardProps) => {
       const days = Math.floor(difference / (60 * 60 * 24));
       const hours = Math.floor((difference / (60 * 60)) % 24);
       const minutes = Math.floor((difference / 60) % 60);
+      const seconds = difference % 60;
+
+      // Show seconds if less than 1 hour remaining
+      if (difference < 3600) {
+        return `${minutes}m ${seconds}s`;
+      }
 
       return `${days}d ${hours}h ${minutes}m`;
     };
