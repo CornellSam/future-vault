@@ -41,6 +41,7 @@ contract TimeCapsule is SepoliaConfig {
 
     /// @param manager Address authorized to decrypt capsules after unlock date
     constructor(address manager) {
+        require(manager != address(0), "Decrypt manager cannot be zero address");
         decryptManager = manager;
         _capsuleCounter = 0;
     }
