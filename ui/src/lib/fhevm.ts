@@ -46,8 +46,10 @@ export async function initializeFHEVM(chainId?: number): Promise<FhevmInstance> 
       try {
         const chainIdHex = await (window as any).ethereum.request({ method: "eth_chainId" });
         currentChainId = parseInt(chainIdHex, 16);
+        console.log("[FHEVM] Retrieved chainId from provider:", currentChainId);
       } catch (error) {
         console.error("[FHEVM] Failed to get chainId:", error);
+        console.warn("[FHEVM] Defaulting to local network (31337)");
         currentChainId = 31337;
       }
     }
