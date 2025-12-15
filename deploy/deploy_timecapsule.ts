@@ -5,15 +5,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
-  // Deploy TimeCapsule contract with deployer as decrypt manager
+  // Deploy TimeCapsule contract
   const deployedTimeCapsule = await deploy("TimeCapsule", {
     from: deployer,
-    args: [deployer], // deployer is the decrypt manager
+    args: [],
     log: true,
   });
 
   console.log(`TimeCapsule contract deployed at: ${deployedTimeCapsule.address}`);
-  console.log(`Decrypt manager: ${deployer}`);
 };
 
 export default func;

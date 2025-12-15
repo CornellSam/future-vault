@@ -1,9 +1,249 @@
-/* BUG: Minimal styles */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222 47% 14%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 263 70% 50%;
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 263 70% 50%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217 33% 25%;
+    --input: 217 33% 25%;
+    --ring: 263 70% 50%;
+    
+    --radius: 0.75rem;
+    
+    --vault-glow: 263 70% 50%;
+    --countdown-glow: 45 100% 50%;
+    --success-glow: 142 76% 36%;
+    --unlock-glow: 45 100% 60%;
+  }
 }
 
-#root {
-  min-height: 100vh;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-xl;
+  }
+  
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3),
+                0 0 40px hsl(var(--primary) / 0.1);
+  }
+  
+  .glow-success {
+    box-shadow: 0 0 20px hsl(var(--success-glow) / 0.4),
+                0 0 40px hsl(var(--success-glow) / 0.2);
+  }
+  
+  .glow-unlock {
+    box-shadow: 0 0 30px hsl(var(--unlock-glow) / 0.5),
+                0 0 60px hsl(var(--unlock-glow) / 0.3),
+                0 0 100px hsl(var(--unlock-glow) / 0.1);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-unlock-burst {
+    animation: unlock-burst 1s ease-out forwards;
+  }
+  
+  .animate-reveal {
+    animation: reveal 0.8s ease-out forwards;
+  }
+  
+  .animate-sparkle {
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes unlock-burst {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotateX(90deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1) rotateX(45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateX(0deg);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+/* Page transition styles */
+.page-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
+
+/* RainbowKit Theme Customization */
+:root {
+  --rk-colors-accentColor: hsl(263 70% 50%);
+  --rk-colors-accentColorForeground: hsl(210 40% 98%);
+  --rk-colors-actionButtonBorder: hsl(217 33% 25%);
+  --rk-colors-actionButtonBorderMobile: hsl(217 33% 25%);
+  --rk-colors-actionButtonSecondaryBackground: hsl(217 33% 17%);
+  --rk-colors-closeButton: hsl(210 40% 98%);
+  --rk-colors-closeButtonBackground: hsl(222 47% 14%);
+  --rk-colors-connectButtonBackground: hsl(263 70% 50%);
+  --rk-colors-connectButtonBackgroundError: hsl(0 62% 50%);
+  --rk-colors-connectButtonInnerBackground: hsl(222 47% 14%);
+  --rk-colors-connectButtonText: hsl(210 40% 98%);
+  --rk-colors-connectButtonTextError: hsl(210 40% 98%);
+  --rk-colors-connectionIndicator: hsl(142 76% 36%);
+  --rk-colors-downloadBottomCardBackground: hsl(222 47% 14%);
+  --rk-colors-downloadTopCardBackground: hsl(222 47% 11%);
+  --rk-colors-error: hsl(0 62% 50%);
+  --rk-colors-generalBorder: hsl(217 33% 25%);
+  --rk-colors-generalBorderDim: hsl(217 33% 25%);
+  --rk-colors-menuItemBackground: hsl(222 47% 14%);
+  --rk-colors-modalBackdrop: rgba(0, 0, 0, 0.5);
+  --rk-colors-modalBackground: hsl(222 47% 14%);
+  --rk-colors-modalBorder: hsl(217 33% 25%);
+  --rk-colors-modalText: hsl(210 40% 98%);
+  --rk-colors-modalTextDim: hsl(215 20% 65%);
+  --rk-colors-negative: hsl(0 62% 50%);
+  --rk-colors-primaryButton: hsl(263 70% 50%);
+  --rk-colors-primaryButtonText: hsl(210 40% 98%);
+  --rk-colors-profileAction: hsl(222 47% 14%);
+  --rk-colors-profileActionHover: hsl(222 47% 20%);
+  --rk-colors-profileForeground: hsl(222 47% 14%);
+  --rk-colors-selectedOptionBorder: hsl(263 70% 50%);
+  --rk-colors-standby: hsl(215 20% 65%);
+  --rk-colors-success: hsl(142 76% 36%);
+  --rk-colors-testnetIndicator: hsl(45 100% 50%);
+  --rk-colors-textPrimary: hsl(210 40% 98%);
+  --rk-colors-textSecondary: hsl(215 20% 65%);
+  --rk-colors-textTertiary: hsl(217 33% 17%);
+}
+
+@layer components {
+  .rainbow-kit-button {
+    @apply rounded-xl font-semibold transition-all;
+  }
 }

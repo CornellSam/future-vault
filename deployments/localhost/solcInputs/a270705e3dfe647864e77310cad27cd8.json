@@ -1,0 +1,39 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/FHECounter.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.24;\r\n\r\ncontract FHECounter {\r\n    uint64 private counter;\r\n\r\n    constructor() {\r\n        counter = 0;\r\n    }\r\n\r\n    function increment() public {\r\n        counter += 1;\r\n    }\r\n\r\n    function getCounter() public view returns (uint64) {\r\n        return counter;\r\n    }\r\n}\r\n"
+    },
+    "contracts/TimeCapsule.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.24;\n\ncontract TimeCapsule {\n    struct Capsule {\n        address creator;\n        uint256 unlockTime;\n        bytes encryptedContent;\n        bool isRevealed;\n    }\n\n    uint256 public capsuleCount;\n    mapping(uint256 => Capsule) public capsules;\n    mapping(uint256 => string) public capsuleTitles;\n    mapping(uint256 => string) public capsuleDescriptions;\n\n    event CapsuleCreated(uint256 indexed capsuleId, address indexed creator, uint256 unlockTime);\n    event CapsuleRevealed(uint256 indexed capsuleId);\n\n    function createCapsule(\n        string memory title,\n        string memory description,\n        bytes memory content,\n        uint256 unlockTime\n    ) public returns (uint256) {\n        require(unlockTime > block.timestamp, \"Unlock time must be in the future\");\n\n        uint256 capsuleId = capsuleCount++;\n\n        capsules[capsuleId] = Capsule({\n            creator: msg.sender,\n            unlockTime: unlockTime,\n            encryptedContent: content,\n            isRevealed: false\n        });\n\n        capsuleTitles[capsuleId] = title;\n        capsuleDescriptions[capsuleId] = description;\n\n        emit CapsuleCreated(capsuleId, msg.sender, unlockTime);\n        return capsuleId;\n    }\n\n    function revealCapsule(uint256 capsuleId) public {\n        Capsule storage capsule = capsules[capsuleId];\n        require(block.timestamp >= capsule.unlockTime, \"Capsule is still locked\");\n        require(!capsule.isRevealed, \"Capsule already revealed\");\n\n        capsule.isRevealed = true;\n        emit CapsuleRevealed(capsuleId);\n    }\n\n    function getCapsule(uint256 capsuleId) public view returns (\n        address creator,\n        uint256 unlockTime,\n        bool isRevealed,\n        string memory title,\n        string memory description\n    ) {\n        Capsule storage capsule = capsules[capsuleId];\n        return (\n            capsule.creator,\n            capsule.unlockTime,\n            capsule.isRevealed,\n            capsuleTitles[capsuleId],\n            capsuleDescriptions[capsuleId]\n        );\n    }\n\n    function getEncryptedContent(uint256 capsuleId) public view returns (bytes memory) {\n        return capsules[capsuleId].encryptedContent;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
